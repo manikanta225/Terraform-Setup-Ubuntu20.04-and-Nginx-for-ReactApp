@@ -85,7 +85,7 @@ resource "azurerm_network_interface" "webserver" {
 #create Linux VM
 resource "azurerm_linux_virtual_machine" "nginx" {
    size = var.instance_size
-   name = "nginx"
+   name =  "nginx"
    resource_group_name = azurerm_resource_group.webserver.name
    location = azurerm_resource_group.webserver.location
    custom_data = base64encode(file("scripts/init.sh"))
@@ -94,12 +94,17 @@ resource "azurerm_linux_virtual_machine" "nginx" {
    ]
 
    source_image_reference {
-    publisher =     "Canonical"
-    offer     =     "UbuntuServer"
-    sku       =     "16.04-LTS"
-    version   =     "latest"
-       
+   publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
    }
+#you can change to credentials 
+   computer_name = "nginx"
+   admin_username = "var.username"
+   admin_password = "Superadmin23"
+   disable_password_authentication = false
+
    os_disk {
        name = "nginxdisk23"
        caching = "ReadWrite"
