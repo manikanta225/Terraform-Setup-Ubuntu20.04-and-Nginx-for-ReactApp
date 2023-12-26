@@ -85,7 +85,7 @@ resource "azurerm_network_interface" "webserver" {
 #create Linux VM
 resource "azurerm_linux_virtual_machine" "nginx" {
    size = var.instance_size
-   name = "chisomjude-nginx-webserver"
+   name = "nginxVM"
    resource_group_name = azurerm_resource_group.webserver.name
    location = azurerm_resource_group.webserver.location
    custom_data = base64encode(file("scripts/init.sh"))
