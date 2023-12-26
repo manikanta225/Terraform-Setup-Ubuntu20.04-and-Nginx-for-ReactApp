@@ -100,12 +100,6 @@ resource "azurerm_linux_virtual_machine" "nginx" {
     version   =     "latest"
        
    }
-#you can change to credentials 
-   computer_name = "nginx"
-   admin_username = "root"
-   admin_password = "Superadmin23"
-   disable_password_authentication = false
-
    os_disk {
        name = "nginxdisk23"
        caching = "ReadWrite"
